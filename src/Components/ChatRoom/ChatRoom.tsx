@@ -9,12 +9,8 @@ import {
 	addDoc,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-
-const ChatMessage: FC<{ message: any }> = ({ message }) => {
-	const { text, uid } = message;
-
-	return <p>{text}</p>;
-};
+import ChatMessage from "./ChatMessage";
+import ChatBox from "./ChatBox";
 
 const ChatRoom: FC<{ app: any }> = ({ app }) => {
 	const dummy = useRef();
@@ -23,7 +19,6 @@ const ChatRoom: FC<{ app: any }> = ({ app }) => {
 	const firestore = getFirestore(app);
 	const messagesRef = collection(firestore, "messages");
 	const q = query(messagesRef, orderBy("createdAt", "desc"), limit(25));
-	console.log(q);
 	const [messages] = useCollectionData(q);
 
 	const [formValue, setFormValue] = useState("");
@@ -31,7 +26,13 @@ const ChatRoom: FC<{ app: any }> = ({ app }) => {
 	return (
 		<>
 			<h1>Chat Room</h1>
-			{messages && messages.slice(0).reverse().map((msg, i) => <ChatMessage key={i} message={msg} />)}
+			{messages &&
+				messages
+					.slice(0)
+					.reverse()
+					.map((msg, i) => <ChatMessage key={i} message={msg} />)}
+
+                    <ChatBox messagesRef={messagesRef} formValue={formValue} setFormValue={setFormValue} />
 		</>
 	);
 };
