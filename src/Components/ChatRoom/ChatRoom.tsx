@@ -21,7 +21,6 @@ const ChatRoom: FC<{ app: any }> = ({ app }) => {
 
 	return (
 		<div className='w-full h-full'>
-			<h1>Chat Room</h1>
 			{messages &&
 				messages
 					.slice(0)

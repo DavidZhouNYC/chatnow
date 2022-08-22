@@ -7,6 +7,7 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import ChatRoom from "./Components/ChatRoom/ChatRoom";
 import SignIn from "./Components/Authentication/SignIn";
+import SignOut from "./Components/Authentication/SignOut";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyCYkTo8MhdCrMmeHWqULRbw_-z58xxB2OM",
@@ -29,7 +30,10 @@ const App = () => {
 	return (
 		<>
 			<Header>
-				<p>Header</p>
+				<h1 className='font-bold text-white text-center text-6xl'>
+					ChatNow
+				</h1>
+				<SignOut />
 			</Header>
 			<Main>{user ? <ChatRoom app={app} /> : <SignIn />}</Main>
 			<Footer />

@@ -7,7 +7,7 @@ const ChatMessage: FC<{ message: any }> = ({ message }) => {
 		uid === getAuth().currentUser?.uid ? "sent" : "received";
 
 	return (
-		<div className={`message ${messageClass}`}>
+		<div className={`message ${messageClass} m-5`}>
 			<img
 				src={photoURL || require("../../images/default_avatar.png")}
 				alt='Profile'
