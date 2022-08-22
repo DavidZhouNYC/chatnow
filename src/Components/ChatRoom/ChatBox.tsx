@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { getAuth } from "firebase/auth";
-import { addDoc, getFirestore, serverTimestamp } from "firebase/firestore";
+import { addDoc, serverTimestamp } from "firebase/firestore";
 
 const ChatBox: FC<{
 	messagesRef: any;

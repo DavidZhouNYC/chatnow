@@ -8,7 +8,11 @@ const ChatMessage: FC<{ message: any }> = ({ message }) => {
 
 	return (
 		<div className={`message ${messageClass}`}>
-			<img src={photoURL || require('../../images/default_avatar.png') } />
+			<img
+				src={photoURL || require("../../images/default_avatar.png")}
+				alt='Profile'
+				referrerPolicy='no-referrer'
+			/>
 			<p>{text}</p>
 		</div>
 	);

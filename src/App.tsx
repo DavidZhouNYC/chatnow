@@ -3,12 +3,10 @@ import Header from "./Components/UI/Header";
 import Main from "./Components/UI/Main";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
 // import { getAnalytics } from "firebase/analytics";
 import { useAuthState } from "react-firebase-hooks/auth";
 import ChatRoom from "./Components/ChatRoom/ChatRoom";
 import SignIn from "./Components/Authentication/SignIn";
-// import { useCollectionData } from "react-firebase-hooks/firestore";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyCYkTo8MhdCrMmeHWqULRbw_-z58xxB2OM",
@@ -20,7 +18,6 @@ const firebaseConfig = {
 	measurementId: "G-8P6DC80QVP",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
