@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { getAuth } from "firebase/auth";
 import { addDoc, getFirestore, serverTimestamp } from "firebase/firestore";
 
@@ -6,7 +6,8 @@ const ChatBox: FC<{
 	messagesRef: any;
 	formValue: string;
 	setFormValue: Function;
-}> = ({ messagesRef, formValue, setFormValue }) => {
+	scrollAnchor: React.RefObject<HTMLDivElement>;
+}> = ({ messagesRef, formValue, setFormValue, scrollAnchor }) => {
 	const sendMessageHandler = async (event: any) => {
 		event.preventDefault();
 		const auth = getAuth();
@@ -20,10 +21,11 @@ const ChatBox: FC<{
 		});
 
 		setFormValue("");
+		scrollAnchor.current!.scrollIntoView({ behavior: "smooth" });
 	};
 
 	return (
-		<form onSubmit={sendMessageHandler}>
+		<form onSubmit={sendMessageHandler} className='min-w-full'>
 			<input
 				value={formValue}
 				onChange={(e) => setFormValue(e.target.value)}

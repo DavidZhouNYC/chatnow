@@ -13,7 +13,7 @@ import ChatMessage from "./ChatMessage";
 import ChatBox from "./ChatBox";
 
 const ChatRoom: FC<{ app: any }> = ({ app }) => {
-	const dummy = useRef();
+	const scrollAnchor = useRef<HTMLDivElement>(null);
 	const messageInput = useRef();
 
 	const firestore = getFirestore(app);
@@ -24,7 +24,7 @@ const ChatRoom: FC<{ app: any }> = ({ app }) => {
 	const [formValue, setFormValue] = useState("");
 
 	return (
-		<>
+		<div className='w-screen h-screen'>
 			<h1>Chat Room</h1>
 			{messages &&
 				messages
@@ -32,8 +32,15 @@ const ChatRoom: FC<{ app: any }> = ({ app }) => {
 					.reverse()
 					.map((msg, i) => <ChatMessage key={i} message={msg} />)}
 
-                    <ChatBox messagesRef={messagesRef} formValue={formValue} setFormValue={setFormValue} />
-		</>
+			<ChatBox
+				messagesRef={messagesRef}
+				formValue={formValue}
+				setFormValue={setFormValue}
+				scrollAnchor={scrollAnchor}
+			/>
+
+			<div ref={scrollAnchor}></div>
+		</div>
 	);
 };
 

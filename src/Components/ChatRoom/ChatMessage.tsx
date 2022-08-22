@@ -8,7 +8,7 @@ const ChatMessage: FC<{ message: any }> = ({ message }) => {
 
 	return (
 		<div className={`message ${messageClass}`}>
-			<img src={photoURL || '../../images/default_avatar.png'} />
+			<img src={photoURL || require('../../images/default_avatar.png') } />
 			<p>{text}</p>
 		</div>
 	);
